@@ -15,9 +15,12 @@ import io
 from ultralytics import YOLO
 import requests
 import json
-
+import gdown
 url = "https://yolo-syntax-dev.cfapps.eu20.hana.ondemand.com/predict"
 
+drive = "https://drive.google.com/file/d/1oMa10Hcx_Ikrf8s85Qyut2g1ASxYgDEg/view?usp=share_link"
+output = "yoloLEGO.pt"
+m = gdown.download(drive, output, quiet=False)
 
 def pil_to_numpy(image):
     """
@@ -108,7 +111,7 @@ if nccode:
     if bytesio:
         st.image(bytesio)
         img = convert_bytesio_to_image(bytesio)
-        model = YOLO('/home/joel/Syntax/VI/yoloLEGO.pt')
+        model = YOLO(m)
         image = pil_to_numpy(img)
         results = model(image)
 
