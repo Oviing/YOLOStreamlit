@@ -2,3 +2,4 @@ ultralytics
 flask
 Pillow
 requests
+gdown
